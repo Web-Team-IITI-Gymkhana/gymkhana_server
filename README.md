@@ -1,1 +1,2 @@
-# gymkhana_server
+# Gymkhana IITI
+Django based backend for the Gymkhana App.
