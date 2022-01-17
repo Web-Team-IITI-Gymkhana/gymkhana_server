@@ -1,2 +1,6 @@
 # Gymkhana IITI
-Django based backend for the Gymkhana App.
+FAST API based backend for the Gymkhana App.
+
+# Tech Stack
+Fast API
+PostGress
