@@ -1,11 +1,11 @@
 from typing import List
 
+from Hostel.models import Hostel
 from fastapi import FastAPI
-from pydantic import BaseModel
+from Hostel.schemas import HostelSchema
 
-import models
-from config import settings
-from connection import session
+from Server.config import settings
+from Server.connection import session
 
 # from starlette.config import Config
 # from authlib.integrations.starlette_client import OAuth
@@ -28,15 +28,7 @@ app = FastAPI(
 #     client_kwargs={"scope": "openid email profile"},
 # )
 
-# This will move to schemas.py
-class Hostel(BaseModel):
-    id: int
-    name: str
 
-    class Config:
-        orm_mode = True
-
-
-@app.get("/", response_model=List[Hostel], status_code=200)
+@app.get("/", response_model=List[HostelSchema], status_code=200)
 def index():
-    return session.query(models.Hostel).all()
+    return session.query(Hostel).all()
