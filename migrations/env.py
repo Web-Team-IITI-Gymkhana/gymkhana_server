@@ -1,19 +1,7 @@
 from logging.config import fileConfig
 
 from alembic import context
-
 from Server.config import settings
-
-# import os
-# from dotenv import load_dotenv
-
-# load_dotenv()
-# DATABASE_USERNAME = os.getenv("DATABASE_USERNAME")
-# DATABASE_PASSWORD = os.getenv("DATABASE_PASSWORD")
-# DATABASE = os.getenv("DATABASE")
-# CONNECTION_STRING = (
-#     f"postgresql://{DATABASE_USERNAME}:{DATABASE_PASSWORD}@localhost/{DATABASE}"
-# )
 from sqlalchemy import engine_from_config, pool
 
 # this is the Alembic Config object, which provides
@@ -35,7 +23,6 @@ target_metadata = [Base.metadata]
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
 config.set_main_option("sqlalchemy.url", settings.CONNECTION_STRING)
-print(settings.CONNECTION_STRING)
 
 
 def run_migrations_offline():

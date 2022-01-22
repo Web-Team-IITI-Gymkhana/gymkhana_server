@@ -1,8 +1,10 @@
 from typing import Optional
-from pydantic import BaseModel
 from uuid import UUID
 
-class HostelSchema(BaseModel):
+from pydantic import BaseModel
+
+
+class Hostel(BaseModel):
     id: UUID
     name: str
     warden: Optional[str] = None
