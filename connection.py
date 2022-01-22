@@ -1,20 +1,10 @@
-import os
-
-from dotenv import load_dotenv
+from config import settings
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-load_dotenv()
-
-database_username = os.getenv("DATABASE_USERNAME")
-database_password = os.getenv("DATABASE_PASSWORD")
-database = os.getenv("DATABASE")
-debug = os.getenv("IN") == "development"
-
-connection_string = (
-    f"postgresql://{database_username}:{database_password}@localhost/{database}"
-)
+debug = settings.DEBUG
+connection_string = settings.CONNECTION_STRING
 
 engine = create_engine(connection_string, echo=debug)
 

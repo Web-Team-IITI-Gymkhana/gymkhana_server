@@ -6,6 +6,7 @@ class Hostel(Base):
     __tablename__ = 'hostel'
     id = Column(Integer, primary_key=True)
     name = Column(String(255), nullable=False, unique=True)
+    flooe = Column(Integer, nullable=False)
 
     def __repr__(self):
         return self.name
