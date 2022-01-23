@@ -4,7 +4,7 @@ from uuid import UUID
 from pydantic import BaseModel
 
 
-class Hostel(BaseModel):
+class HostelSchema(BaseModel):
     id: UUID
     name: str
     warden: Optional[str] = None

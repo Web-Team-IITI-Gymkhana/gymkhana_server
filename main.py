@@ -1,11 +1,7 @@
-from typing import List
+from fastapi import FastAPI
 
-from fastapi import FastAPI, Depends
-
-from Hostel import models, schemas
+from Hostel.router import router as Hostelrouter
 from Server.config import settings
-from Server.connection import SessionLocal
-from sqlalchemy.orm import Session
 
 # from starlette.config import Config
 # from authlib.integrations.starlette_client import OAuth
@@ -28,14 +24,7 @@ app = FastAPI(
     openapi_tags=tags_metadata,
 )
 
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
+app.include_router(Hostelrouter)
 
 # config_data = {
 #     "GOOGLE_CLIENT_ID": settings.GOOGLE_CLIENT_ID,
@@ -48,8 +37,3 @@ def get_db():
 #     server_metadata_url="https://accounts.google.com/.well-known/openid-configuration",
 #     client_kwargs={"scope": "openid email profile"},
 # )
-
-
-@app.get("/", response_model=List[schemas.Hostel], status_code=200, tags=["Hostel"])
-def index(db: Session = Depends(get_db)):
-    return db.query(models.Hostel).all()
