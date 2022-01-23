@@ -1,8 +1,8 @@
-"""baseline
+"""Model Hostel Added
 
-Revision ID: 26ac59a56fcb
-Revises: 
-Create Date: 2022-01-22 21:30:05.596328
+Revision ID: 5be9fe5edb7c
+Revises: 9ede2db89f3b
+Create Date: 2022-01-23 16:37:25.387859
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision = '26ac59a56fcb'
-down_revision = None
+revision = '5be9fe5edb7c'
+down_revision = '9ede2db89f3b'
 branch_labels = None
 depends_on = None
 
