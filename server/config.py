@@ -1,35 +1,39 @@
-import os
+from pydantic import BaseSettings, EmailStr, HttpUrl, PostgresDsn
 
-from dotenv import load_dotenv
+class Settings(BaseSettings):
+    TITLE: str = "Gymkhana Server"
+    VERSION: str = "1.0.0"
+    DESCRIPTION: str = "Backend for the Gymkhana Server"
 
-load_dotenv()
+    NAME: str = "IIT INDORE"
+    URL: HttpUrl = "https://www.iiti.ac.in/"
+    EMAIL: EmailStr = "AakashGupta@iiti.ac.in"
 
-
-class Settings:
-    TITLE = "Gymkhana Server"
-    VERSION = "1.0.0"
-    DESCRIPTION = "Backend for the Gymkhana Server"
-
-    NAME = "IIT INDORE"
-    URL = "https://www.iiti.ac.in/"
-    EMAIL = "AakashGupta@iiti.ac.in"
-
-    LICENSE_NAME = "MIT"
-    LICENSE_URL = "https://github.com/Web-Team-IITI-Gymkhana/gymkhana_server/blob/main/LICENSE"
-
-    DATABASE_USERNAME = os.getenv("DATABASE_USERNAME")
-    DATABASE_PASSWORD = os.getenv("DATABASE_PASSWORD")
-    DATABASE = os.getenv("DATABASE")
-    CONNECTION_STRING = (
-        f"postgresql://{DATABASE_USERNAME}:{DATABASE_PASSWORD}@localhost/{DATABASE}"
+    LICENSE_NAME: str = "MIT"
+    LICENSE_URL: HttpUrl = (
+        "https://github.com/Web-Team-IITI-Gymkhana/gymkhana_server/blob/main/LICENSE"
     )
 
-    SECRET_KEY = os.getenv("SECRET_KEY")
-    GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
-    GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
+    DATABASE_USERNAME: str
+    DATABASE_PASSWORD: str
+    DATABASE: str
 
-    FRONTEND_URL = os.getenv("FRONTEND_URL")
-    DEBUG = os.getenv("IN") == "DEVELOPMENT"
+    SECRET_KEY: str
+    GOOGLE_CLIENT_ID: str
+    GOOGLE_CLIENT_SECRET: str
+
+    FRONTEND_URL: str
+    ENVIRONMENT: str
+
+    class Config:
+        env_file = ".env"
+        env_file_encoding = "UTF-8"
+    
+    def get_connection_string(self) -> PostgresDsn:
+        return f"postgresql://{self.DATABASE_USERNAME}:{self.DATABASE_PASSWORD}@localhost/{self.DATABASE}"
+
+    def debug(self) -> bool:
+        return (self.ENVIRONMENT == "DEVELOPMENT")
 
 
 settings = Settings()

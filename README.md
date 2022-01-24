@@ -2,7 +2,7 @@
 FAST API based backend for the Gymkhana App.
 
 # Tech Stack
-Fast API
-PostGres
-Alembic
-SQLAlchemy
+1. Fast API
+2. PostGres
+3. Alembic
+4. SQLAlchemy  

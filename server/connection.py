@@ -4,8 +4,8 @@ from sqlalchemy.orm import sessionmaker
 
 from server.config import settings
 
-debug = settings.DEBUG
-connection_string = settings.CONNECTION_STRING
+debug = settings.debug()
+connection_string = settings.get_connection_string()
 
 engine = create_engine(connection_string, echo=debug)
 
