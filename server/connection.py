@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-from Server.config import settings
+from server.config import settings
 
 debug = settings.DEBUG
 connection_string = settings.CONNECTION_STRING

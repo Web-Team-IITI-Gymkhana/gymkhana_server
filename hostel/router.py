@@ -1,7 +1,7 @@
 from typing import List
 
 from fastapi import APIRouter, Depends
-from Server.dependencies import get_db
+from server.dependencies import get_db
 from sqlalchemy.orm import Session
 
 from .models import Hostel

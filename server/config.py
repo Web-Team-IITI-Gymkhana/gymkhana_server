@@ -23,8 +23,12 @@ class Settings:
     CONNECTION_STRING = (
         f"postgresql://{DATABASE_USERNAME}:{DATABASE_PASSWORD}@localhost/{DATABASE}"
     )
+
+    SECRET_KEY = os.getenv("SECRET_KEY")
     GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
     GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
+
+    FRONTEND_URL = os.getenv("FRONTEND_URL")
     DEBUG = os.getenv("IN") == "DEVELOPMENT"
 
 

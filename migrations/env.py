@@ -1,7 +1,7 @@
 from logging.config import fileConfig
 
 from alembic import context
-from Server.config import settings
+from server.config import settings
 from sqlalchemy import engine_from_config, pool
 
 # this is the Alembic Config object, which provides
@@ -14,7 +14,7 @@ fileConfig(config.config_file_name)
 
 # add your model's MetaData object here
 # for 'autogenerate' support
-from Hostel.models import Base
+from hostel.models import Base
 
 target_metadata = [Base.metadata]
 
