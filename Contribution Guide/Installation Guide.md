@@ -3,7 +3,8 @@
 ### Requirements
 1. Python 3.6+
 2. Pip  
-3. Basic Knowledge of Virtual Environment
+3. PostgreSQL
+4. Basic Knowledge of Virtual Environment
 
 ### Steps to Reproduce - Linux Users
 1. Clone the repository.
@@ -25,6 +26,3 @@
 5. To run the Application, go into the parent directory.
 6. 
 7. 
-
-
-
