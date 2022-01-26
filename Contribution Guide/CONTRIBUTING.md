@@ -12,7 +12,7 @@ To create new apps, (eg. "Hostel"), write the following in the parent directory.
 `python createapp.py <app_name>`
 
 ### New Models
-While creating new models, or updating the existing ones. The Base needs to be added to the `migrations/env.py` file. To reflect those changes in the database, the following commands need to be run.  
+While creating new models, or updating the existing ones, schemas must be created or updated. The Base needs to be added to the `migrations/env.py` file if not present. To reflect those changes in the database, the following commands need to be run.  
 `alembic revision --autogenerate -m "Comment about the changes"`  
 `alembic upgrade heads`
 
