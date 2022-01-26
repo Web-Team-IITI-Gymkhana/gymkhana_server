@@ -1,4 +1,7 @@
+from uuid import uuid4
+
 from fastapi.testclient import TestClient
+
 from ..main import app
 
 client = TestClient(app)
@@ -16,11 +19,11 @@ class Test_Hostel:
 
     def test_get_all(self):
         response = client.get("/hostel/")
-        assert response.status_code == 200
+        assert response.status_code == 200, f"Received {response.status_code}"
 
     def test_create(self):
         response = client.post("/hostel/", json=self.record)
-        assert response.status_code == 200
+        assert response.status_code == 200, f"Received {response.status_code}"
         response_record = response.json()
         self.record["id"] = response_record["id"]
         assert response_record["name"] == "Devi Ahilya"
@@ -31,9 +34,19 @@ class Test_Hostel:
 
     def test_get_one(self):
         response = client.get(f"/hostel/{self.record['id']}")
-        assert response.status_code == 200
+        assert response.status_code == 200, f"Received {response.status_code}"
         assert response.json() == self.record
+
+    def test_get_non_existing(self):
+        response = client.get(f"/hostel/{uuid4()}")
+        assert response.status_code == 404, f"Received {response.status_code}"
+        assert response.json() == {"detail": "Hostel not found"}
 
     def test_delete(self):
         response = client.delete(f"/hostel/{self.record['id']}")
-        assert response.status_code == 204
+        assert response.status_code == 204, f"Received {response.status_code}"
+
+    def test_delete_non_existing(self):
+        response = client.get(f"/hostel/{uuid4()}")
+        assert response.status_code == 404, f"Received {response.status_code}"
+        assert response.json() == {"detail": "Hostel not found"}
