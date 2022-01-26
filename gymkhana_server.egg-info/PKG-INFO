@@ -1,9 +1,11 @@
 Metadata-Version: 2.1
 Name: gymkhana-server
-Version: 0.0.0
-Summary: UNKNOWN
-Home-page: UNKNOWN
-License: UNKNOWN
+Version: 1.0.0
+Summary: Backend for the Gymkhana Server
+Home-page: WaitingForApproval
+Author: IIT INDORE
+Author-email: AakashGupta@iiti.ac.in
+License: MIT
 Platform: UNKNOWN
 License-File: LICENSE
 
