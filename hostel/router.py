@@ -1,7 +1,7 @@
 from typing import List
 from uuid import UUID, uuid4
 
-from fastapi import APIRouter, Depends, HTTPException, Response
+from fastapi import APIRouter, Depends, HTTPException
 from server.dependencies import get_db
 from sqlalchemy.orm import Session
 

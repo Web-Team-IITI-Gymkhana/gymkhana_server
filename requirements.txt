@@ -37,6 +37,7 @@ pyparsing==3.0.7
 pytest==6.2.5
 python-dotenv==0.19.2
 PyYAML==6.0
+requests==2.27.1
 rfc3986==1.5.0
 sniffio==1.2.0
 SQLAlchemy==1.4.29
@@ -44,6 +45,7 @@ starlette==0.17.1
 toml==0.10.2
 tomli==1.2.3
 typing_extensions==4.0.1
+urllib3==1.26.8
 uvicorn==0.17.0
 uvloop==0.16.0
 watchgod==0.7

@@ -24,3 +24,7 @@ To reset the database, run the following commands.
 ### To update the database
 In order to update the database after each pull, run the following command.  
 `alembic upgrade heads`
+
+### To test
+To test the API Endpoints, filenames, functions must start with `test_`, whereas classes must start with `Test`. To run pytest, run the following command in the parent directory.  
+`python -m pytest`
