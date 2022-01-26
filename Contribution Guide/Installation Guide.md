@@ -5,6 +5,7 @@
 2. Pip  
 3. PostgreSQL
 4. Basic Knowledge of Virtual Environment
+5. git
 
 ### Steps to Reproduce - Linux Users
 1. Clone the repository.
