@@ -1,5 +1,6 @@
 from authlib.integrations.starlette_client import OAuth
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from starlette.config import Config
 
 from hostel.router import router as Hostelrouter
@@ -21,6 +22,14 @@ app = FastAPI(
         "url": settings.LICENSE_URL,
     },
     openapi_tags=tags_metadata,
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+    allow_credentials=True,
 )
 
 app.include_router(Hostelrouter)
@@ -49,35 +58,36 @@ from fastapi import Request
 from starlette.responses import RedirectResponse
 
 
-@app.route('/login')
+@app.route("/login")
 async def login(request: Request):
-    redirect_uri = request.url_for('auth')
+    redirect_uri = request.url_for("auth")
     return await oauth.google.authorize_redirect(request, redirect_uri)
 
 
-@app.route('/auth')
+@app.route("/auth")
 async def auth(request: Request):
     try:
         access_token = await oauth.google.authorize_access_token(request)
     except OAuthError:
-        return RedirectResponse(url='/')
+        return RedirectResponse(url="/")
     user_data = await oauth.google.parse_id_token(request, access_token)
-    request.session['user'] = dict(user_data)
-    return RedirectResponse(url='/')
+    request.session["user"] = dict(user_data)
+    return RedirectResponse(url="/")
+
 
 from starlette.responses import HTMLResponse
 
 
-@app.get('/')
+@app.get("/")
 def public(request: Request):
-    user = request.session.get('user')
+    user = request.session.get("user")
     if user:
-        name = user.get('name')
-        return HTMLResponse(f'<p>Hello {name}!</p><a href=/logout>Logout</a>')
-    return HTMLResponse('<a href=/login>Login</a>')
+        name = user.get("name")
+        return HTMLResponse(f"<p>Hello {name}!</p><a href=/logout>Logout</a>")
+    return HTMLResponse("<a href=/login>Login</a>")
 
 
-@app.route('/logout')
+@app.route("/logout")
 async def logout(request: Request):
-    request.session.pop('user', None)
-    return RedirectResponse(url='/')
+    request.session.pop("user", None)
+    return RedirectResponse(url="/")
