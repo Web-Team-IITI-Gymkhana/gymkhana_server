@@ -14,7 +14,9 @@ fileConfig(config.config_file_name)
 
 # add your model's MetaData object here
 # for 'autogenerate' support
-from hostel.models import Base
+from server.connection import Base
+from hostel.models import Hostel
+from eatery.models import Eatery
 
 target_metadata = [Base.metadata]
 

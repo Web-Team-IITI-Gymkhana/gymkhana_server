@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 from .models import Hostel
 from .schemas import HostelUpdate, HostelSchema
 
-router = APIRouter(prefix="/hostel", tags=["/hostel"])
+router = APIRouter(prefix="/hostel", tags=["Hostel"])
 
 
 @router.get("/", response_model=List[HostelSchema], status_code=200)

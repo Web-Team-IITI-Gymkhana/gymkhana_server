@@ -3,10 +3,14 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.config import Config
 
-from hostel.router import router as Hostelrouter
+from hostel.router import router as Hostel_Router
+from eatery.router import router as Eatery_Router
 from server.config import settings
 
-tags_metadata = [{"name": "Hostel", "description": "Basic Hostel Operations"}]
+tags_metadata = [
+    {"name": "Hostel", "description": "CRUD Operations on Hostel"},
+    {"name": "Eatery", "description": "CRUD Operations on Eatery"},
+]
 
 app = FastAPI(
     title=settings.TITLE,
@@ -32,7 +36,8 @@ app.add_middleware(
     allow_credentials=True,
 )
 
-app.include_router(Hostelrouter)
+app.include_router(Hostel_Router)
+app.include_router(Eatery_Router)
 
 config_data = {
     "GOOGLE_CLIENT_ID": settings.GOOGLE_CLIENT_ID,

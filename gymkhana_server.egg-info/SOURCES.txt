@@ -1,6 +1,11 @@
 LICENSE
 README.md
 setup.py
+eatery/__init__.py
+eatery/models.py
+eatery/router.py
+eatery/schemas.py
+eatery/test_eatery.py
 gymkhana_server.egg-info/PKG-INFO
 gymkhana_server.egg-info/SOURCES.txt
 gymkhana_server.egg-info/dependency_links.txt

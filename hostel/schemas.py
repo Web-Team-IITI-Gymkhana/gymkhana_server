@@ -25,6 +25,6 @@ class HostelSchema(HostelUpdate):
             "example": {
                 "id": "7e4d6231-85ef-45e1-af1d-69e1f42b29c1",
                 "name": "Devi Ahilya",
-                "description": "To be added",
+                "description": "The hereditary noble Queen of the Maratha Empire, India",
             }
         }
