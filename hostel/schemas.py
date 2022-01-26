@@ -10,7 +10,10 @@ class HostelUpdate(BaseModel):
     class Config:
         orm_mode = True
         schema_extra = {
-            "example": {"name": "Devi Ahilya", "description": "To be added"}
+            "example": {
+                "name": "Devi Ahilya",
+                "description": "The hereditary noble Queen of the Maratha Empire, India",
+            }
         }
 
 

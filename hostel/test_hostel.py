@@ -23,7 +23,7 @@ class Test_Hostel:
 
     def test_create(self):
         response = client.post("/hostel/", json=self.record)
-        assert response.status_code == 200, f"Received {response.status_code}"
+        assert response.status_code == 201, f"Received {response.status_code}"
         response_record = response.json()
         self.record["id"] = response_record["id"]
         assert response_record["name"] == "Devi Ahilya"
@@ -41,6 +41,13 @@ class Test_Hostel:
         response = client.get(f"/hostel/{uuid4()}")
         assert response.status_code == 404, f"Received {response.status_code}"
         assert response.json() == {"detail": "Hostel not found"}
+
+    def test_patch(self):
+        response = client.patch(
+            f"/hostel/{self.record['id']}", json=self.updated_record
+        )
+        assert response.status_code == 202, f"Received {response.status_code}"
+        assert response.json() == self.updated_record
 
     def test_delete(self):
         response = client.delete(f"/hostel/{self.record['id']}")
