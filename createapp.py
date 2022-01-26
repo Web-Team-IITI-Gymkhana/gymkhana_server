@@ -7,7 +7,7 @@ with open(os.path.join(path, "__init__.py"), "w") as f:
     pass
 
 with open(os.path.join(path, "models.py"), "w") as f:
-    f.write("from Server.connection import Base\n")
+    f.write("from server.connection import Base\n")
     f.write("# Add the above Base to migrations/env.py\n\n")
 
 with open(os.path.join(path, "schemas.py"), "w") as f:
