@@ -5,7 +5,7 @@ Change in environment variables must be accompanied with the changes in setup.sh
 
 ### Newly Installed Packages
 Newly installed packages must be written into the requirements.txt file.
-Using the command `pip freeze > requirements.txt` in the parent directory.
+Using the command `pip freeze --exclude-editable > requirements.txt` in the parent directory.
 
 ### To Create New Apps
 To create new apps, (eg. "Hostel"), write the following in the parent directory.  
