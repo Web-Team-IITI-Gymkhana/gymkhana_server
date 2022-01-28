@@ -8,10 +8,11 @@
 5. Basic Knowledge of Virtual Environment
 
 ### Steps to Reproduce - Linux Users
-1. Clone the repository.
-2. In the parent directory, write 
-3. `python gymkhana.py -i`
-4. Fill the credentials in .env file and run
-5. `alembic upgrade heads`
-6. To run the server, write
-7. `python gymkhana.py -s`
+1. Clone the repository using
+2. `git clone https://github.com/Web-Team-IITI-Gymkhana/gymkhana_server.git`
+3. In the parent directory, write 
+4. `python manage.py -i`
+5. Fill the credentials in .env file and run
+6. `alembic upgrade heads`
+7. To run the server, write
+8. `python manage.py -s`
