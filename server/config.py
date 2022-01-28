@@ -1,5 +1,6 @@
 from pydantic import BaseSettings, EmailStr, HttpUrl, PostgresDsn
 
+
 class Settings(BaseSettings):
     TITLE: str = "Gymkhana Server"
     VERSION: str = "1.0.0"
@@ -14,9 +15,11 @@ class Settings(BaseSettings):
         "https://github.com/Web-Team-IITI-Gymkhana/gymkhana_server/blob/main/LICENSE"
     )
 
-    DATABASE_USERNAME: str
-    DATABASE_PASSWORD: str
-    DATABASE: str
+    PGUSER: str
+    PGPASSWORD: str
+    PGHOST: str
+    PGDATABASE: str
+    PGPORT: int
 
     SECRET_KEY: str
     GOOGLE_CLIENT_ID: str
@@ -28,12 +31,12 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
         env_file_encoding = "UTF-8"
-    
+
     def get_connection_string(self) -> PostgresDsn:
-        return f"postgresql://{self.DATABASE_USERNAME}:{self.DATABASE_PASSWORD}@localhost/{self.DATABASE}"
+        return f"postgresql://{self.PGUSER}:{self.PGPASSWORD}@{self.PGHOST}:{self.PGPORT}/{self.PGDATABASE}"
 
     def debug(self) -> bool:
-        return (self.ENVIRONMENT == "DEVELOPMENT")
+        return self.ENVIRONMENT == "DEVELOPMENT"
 
 
 settings = Settings()

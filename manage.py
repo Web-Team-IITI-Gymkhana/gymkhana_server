@@ -1,5 +1,4 @@
 import argparse, os
-from argparse import FileType
 from helper.create_app import create_app
 from helper.create_env import create_env
 from helper.activate_venv import activate_venv
