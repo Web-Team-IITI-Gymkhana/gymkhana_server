@@ -37,8 +37,7 @@ group.add_argument(
 group.add_argument(
     "-r",
     "--reset",
-    type=str,
-    nargs=1,
+    action="store_true",
     help="reset database",
 )
 group.add_argument(
@@ -87,4 +86,5 @@ if args.install:
     else:
         os.system("pip install -r windows_requirements.txt")
     
+    print("Fill credentials in .env file")
     print("Don't forget to activate venv before working!")

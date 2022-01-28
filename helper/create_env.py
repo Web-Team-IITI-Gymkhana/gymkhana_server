@@ -8,4 +8,3 @@ def create_env():
         f.write("GOOGLE_CLIENT_ID=\n")
         f.write("GOOGLE_CLIENT_SECRET=\n")
         f.write("FRONTEND_URL=")
-    print("Fill credentials in .env file")
