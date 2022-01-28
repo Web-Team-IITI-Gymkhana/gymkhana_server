@@ -42,7 +42,7 @@ group.add_argument(
 group.add_argument(
     "-f",
     "--freeze",
-    type=FileType("w"),
+    type=str,
     nargs=1,
     help="freeze pip packages into given file",
 )
@@ -64,8 +64,9 @@ group.add_argument(
 args = parser.parse_args()
 
 if args.freeze:
-    os.system(f"pip freeze --exclude-editable > {args.freeze[0].name}")
-    print(f"Installed Packages written into {args.freeze[0].name}")
+    os.system(f"pip freeze --exclude-editable > {args.freeze[0]}")
+    print(f"Installed Packages written into {args.freeze[0]}")
+    
 
 if args.app:
     create_app(args.app[0])
