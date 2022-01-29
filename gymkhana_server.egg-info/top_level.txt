@@ -1,3 +1,5 @@
 eatery
+event
 hostel
 server
+users

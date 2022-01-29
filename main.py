@@ -5,11 +5,13 @@ from starlette.config import Config
 
 from hostel.router import router as Hostel_Router
 from eatery.router import router as Eatery_Router
+from event.router import router as Event_Router
 from server.config import settings
 
 tags_metadata = [
     {"name": "Hostel", "description": "CRUD Operations on Hostel"},
     {"name": "Eatery", "description": "CRUD Operations on Eatery"},
+    {"name": "Event", "description": "CRUD Operations on Event"},
 ]
 
 app = FastAPI(
@@ -38,6 +40,7 @@ app.add_middleware(
 
 app.include_router(Hostel_Router)
 app.include_router(Eatery_Router)
+app.include_router(Event_Router)
 
 config_data = {
     "GOOGLE_CLIENT_ID": settings.GOOGLE_CLIENT_ID,

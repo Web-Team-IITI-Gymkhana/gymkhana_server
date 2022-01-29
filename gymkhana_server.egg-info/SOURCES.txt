@@ -6,6 +6,11 @@ eatery/models.py
 eatery/router.py
 eatery/schemas.py
 eatery/test_eatery.py
+event/__init__.py
+event/models.py
+event/router.py
+event/schemas.py
+event/test_event.py
 gymkhana_server.egg-info/PKG-INFO
 gymkhana_server.egg-info/SOURCES.txt
 gymkhana_server.egg-info/dependency_links.txt
@@ -19,3 +24,8 @@ server/__init__.py
 server/config.py
 server/connection.py
 server/dependencies.py
+users/__init__.py
+users/models.py
+users/router.py
+users/schemas.py
+users/test_users.py
