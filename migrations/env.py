@@ -17,7 +17,7 @@ fileConfig(config.config_file_name)
 from server.connection import Base
 from hostel.models import Hostel
 from eatery.models import Eatery
-# from users.models import Users
+from users.models import User, Blacklisted_Token
 from event.models import Event
 
 target_metadata = [Base.metadata]

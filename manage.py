@@ -54,6 +54,12 @@ group.add_argument(
     help="migrate database",
 )
 group.add_argument(
+    "-p",
+    "--pull",
+    action="store_true",
+    help="pull from git and update local database",
+)
+group.add_argument(
     "-r",
     "--reset",
     action="store_true",
@@ -66,6 +72,9 @@ if args.freeze:
     os.system(f"pip freeze --exclude-editable > {args.freeze[0]}")
     print(f"Installed Packages written into {args.freeze[0]}")
     
+if args.pull:
+    os.system("git pull")
+    os.system("alembic upgrade heads")
 
 if args.app:
     create_app(args.app[0])

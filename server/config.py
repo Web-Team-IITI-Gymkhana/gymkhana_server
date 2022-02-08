@@ -1,3 +1,4 @@
+from fastapi import HTTPException
 from pydantic import BaseSettings, EmailStr, HttpUrl, PostgresDsn
 
 
@@ -22,10 +23,15 @@ class Settings(BaseSettings):
     PGPORT: int
 
     SECRET_KEY: str
+    API_SECRET_KEY: str
+    API_ALGORITHM: str
+    ACCESS_TOKEN_EXPIRE_MINUTES: int
+    REFRESH_TOKEN_EXPIRE_MINUTES: int
+
+
     GOOGLE_CLIENT_ID: str
     GOOGLE_CLIENT_SECRET: str
 
-    FRONTEND_URL: str
     ENVIRONMENT: str
 
     class Config:
@@ -37,6 +43,13 @@ class Settings(BaseSettings):
 
     def debug(self) -> bool:
         return self.ENVIRONMENT == "DEVELOPMENT"
+
+    def invalid_credentials(self):
+        return HTTPException(
+            status_code=401,
+            detail="Invalid credentials",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
 
 
 settings = Settings()
